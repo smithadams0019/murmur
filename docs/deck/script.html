@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murmur — recording script</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground:#fff; --surface:#f7f8fa; --line:#e3e6ec; --ink:#161a25;
+    --ink-2:#5a6273; --ink-3:#8c94a6; --accent:#0a5f59; --accent-soft:#eaf4f2;
+    --broken:#cf1f1f; --broken-bg:#fdeeee; --watch:#d98008; --watch-bg:#fdf3e3;
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--surface); color:var(--ink);
+    font:400 15px/1.6 Inter, system-ui, sans-serif; }
+  header { background:linear-gradient(115deg,#0f2b2e,#0d7a72); color:#fff;
+    padding:26px 34px; border-top:7px solid #6fc6ba; }
+  header h1 { margin:0 0 6px; font-size:22px; font-weight:800; letter-spacing:-.02em }
+  header p { margin:0; color:#b6d5d1; font-size:13.5px }
+  header b { color:#fff }
+  main { padding:24px 34px 70px; max-width:1220px }
+  table { width:100%; border-collapse:collapse; background:var(--ground);
+    border:1px solid var(--line); border-radius:10px; overflow:hidden }
+  td { padding:18px 20px; border-bottom:1px solid var(--line); vertical-align:top }
+  tr:last-child td { border-bottom:0 }
+  td.cue { width:330px; background:var(--surface); border-right:1px solid var(--line) }
+  td.cue b { display:block; font:700 11px/1.4 'IBM Plex Mono',monospace;
+    letter-spacing:.06em; color:var(--accent) }
+  td.cue span { display:block; margin:5px 0 10px; font:400 12px/1 'IBM Plex Mono',monospace;
+    color:var(--ink-3) }
+  td.cue img { width:100%; border:1px solid var(--line); border-radius:6px; display:block }
+  td.say p { margin:0 0 12px; font-size:16.5px; line-height:1.62 }
+  td.say p:last-of-type { margin-bottom:10px }
+  td.say em { font-style:normal; font:400 11.5px/1 'IBM Plex Mono',monospace; color:var(--ink-3) }
+  p.pending { background:var(--watch-bg); border:1px solid #e9c98a; color:#5c3600;
+    border-radius:8px; padding:12px 14px; font-size:14px !important }
+  tr.cap td { border-top:3px solid var(--broken) }
+  tr.cap td.cue::after { content:"three-minute cap falls here";
+    display:block; margin-top:10px; font:700 10.5px/1.4 'IBM Plex Mono',monospace;
+    color:var(--broken); background:var(--broken-bg); border-radius:5px; padding:6px 8px }
+</style></head><body>
+<header>
+  <h1>Murmur — recording script</h1>
+  <p>Total <b>2:25</b> at 155 words a minute, which is <b>under</b> the 3:00 cap.
+  Generated from docs/murmur/video-narration.txt — edit that, not this.</p>
+</header>
+<main><table><tbody>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 1 — THE MOST COMMONLY ACQUIRED HEART DISEASE UNDER 25</b>
+          <span>0:00 → 0:30</span>
+          <img src="../shots/deck-01.png" alt="">
+        </td>
+        <td class="say"><p>The World Health Organization calls rheumatic heart disease the most commonly</p><p>acquired heart disease in people under age twenty-five. Fifty-five million</p><p>people, and about three hundred and sixty thousand lives a year, the large</p><p>majority of them in low- or middle-income countries.</p><p>The damage comes from repeated episodes of rheumatic fever, and further</p><p>episodes are prevented with benzathine penicillin G, injected every three to</p><p>four weeks. The drug is cheap and old. Finding the child is the hard part.</p><em>79 words · 31s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 2 — A STETHOSCOPE FOUND A TENTH OF IT</b>
+          <span>0:30 → 0:50</span>
+          <img src="../shots/deck-02.png" alt="">
+        </td>
+        <td class="say"><p>Marijon and colleagues screened schoolchildren in Cambodia and Mozambique</p><p>twice over. Once by clinical examination, once by echocardiography. In</p><p>Cambodia, examination found two point two cases per thousand. Echo found</p><p>twenty-one point five. In Mozambique, two point three against thirty point</p><p>four. The authors put it at approximately ten times as great.</p><em>52 words · 20s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 3 — THE KNOWLEDGE IS ALREADY IN THE ROOM</b>
+          <span>0:50 → 1:15</span>
+          <img src="../shots/deck-03.png" alt="">
+        </td>
+        <td class="say"><p>Nothing in that gap is a knowledge problem. What is missing is the echo. So</p><p>Murmur does not diagnose rheumatic heart disease, or anything else. It listens</p><p>to a heart-sound recording and says whether a murmur is audible enough to be</p><p>worth an echocardiogram. The decision to refer belongs to a clinician. The</p><p>tool only decides who gets put in front of one.</p><em>63 words · 24s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 4 — 174 PATIENTS THE MODEL HAD NEVER HEARD</b>
+          <span>1:15 → 1:39</span>
+          <img src="../shots/deck-04.png" alt="">
+        </td>
+        <td class="say"><p>The test set is a hundred and seventy-four patients, split by patient, so</p><p>nobody contributes to both training and test. Area under the curve, zero point</p><p>nine five seven. At the shipped threshold, sensitivity ninety-four point three</p><p>per cent and specificity seventy-seven per cent. That is two murmurs missed out</p><p>of thirty-five, and thirty-two children sent for an echo who did not need one.</p><em>64 words · 25s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 5 — A MISS AND A FALSE ALARM ARE NOT THE SAME MISTAKE</b>
+          <span>1:39 → 2:01</span>
+          <img src="../shots/deck-05.png" alt="">
+        </td>
+        <td class="say"><p>That threshold is not the one that makes the tool look most accurate. A missed</p><p>murmur sends a child home. A false alarm sends a child for an echocardiogram.</p><p>Those are different mistakes and the operating point says so. When the model</p><p>misses one, the app prints the miss on the same screen as the score.</p><em>56 words · 22s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>SLIDE 6 — WHAT IS NOT CLAIMED</b>
+          <span>2:01 → 2:25</span>
+          <img src="../shots/deck-06.png" alt="">
+        </td>
+        <td class="say"><p>Murmur has never been deployed in a clinic or trialled, and nothing here says</p><p>it improves any outcome. The corpus was recorded in one screening programme</p><p>with a digital stethoscope, so behaviour on a phone microphone, in another</p><p>population, in a noisy clinic, is unmeasured. The model is five hundred and</p><p>seventy-five kilobytes and runs in the browser. No recording leaves the device.</p><em>63 words · 24s</em></td>
+      </tr>
+      <tr>
+        <td class="cue">
+          <b>RECORDING NOTES</b>
+          <span>2:25 → 2:25</span>
+          
+        </td>
+        <td class="say"><p class="pending">Every figure above is in docs/murmur/sources.md with its citation. Drop in this order if a take runs long: 1. The penicillin sentence on SLIDE 1. 2. The Mozambique pair on SLIDE 2; Cambodia already makes the point. Do not cut SLIDE 3, the two-missed-of-thirty-five line on SLIDE 4, or SLIDE 6.</p><em>0 words · 0s</em></td>
+      </tr></tbody></table></main>
+</body></html>

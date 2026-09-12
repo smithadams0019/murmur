@@ -1,0 +1,42 @@
+{
+ "n_mels": 64,
+ "width": 124,
+ "sample_rate": 4000,
+ "seg_seconds": 4.0,
+ "hop_seconds": 2.0,
+ "n_fft": 256,
+ "hop": 128,
+ "fmin": 25.0,
+ "fmax": 1000.0,
+ "threshold": 0.9454600811004639,
+ "chosen_operating_point": {
+  "target": 0.95,
+  "threshold": 0.9454600811004639,
+  "test_sensitivity": 0.9428571428571428,
+  "test_specificity": 0.7697841726618705,
+  "missed": 2,
+  "over_referred": 32
+ },
+ "metrics": {
+  "val": {
+   "n": 86,
+   "auc": 0.9505541346973572,
+   "sensitivity": 0.9411764705882353,
+   "specificity": 0.855072463768116,
+   "tp": 16.0,
+   "fn": 1.0,
+   "fp": 10.0,
+   "tn": 59.0
+  },
+  "test": {
+   "n": 174,
+   "auc": 0.9568345323741008,
+   "sensitivity": 0.8857142857142857,
+   "specificity": 0.8489208633093526,
+   "tp": 31.0,
+   "fn": 4.0,
+   "fp": 21.0,
+   "tn": 118.0
+  }
+ }
+}

@@ -1,0 +1,52 @@
+[
+ {
+  "file": "caught-84692.wav",
+  "kind": "caught",
+  "truth": "Present",
+  "outcome": "Abnormal",
+  "age": "Child",
+  "location": "AV",
+  "score": 0.9998,
+  "held_out": true
+ },
+ {
+  "file": "missed-84732.wav",
+  "kind": "missed",
+  "truth": "Present",
+  "outcome": "Abnormal",
+  "age": "Neonate",
+  "location": "AV",
+  "score": 0.7085,
+  "held_out": true
+ },
+ {
+  "file": "clear-84962.wav",
+  "kind": "clear",
+  "truth": "Absent",
+  "outcome": "Normal",
+  "age": "Child",
+  "location": "AV",
+  "score": 0.1746,
+  "held_out": true
+ },
+ {
+  "file": "false-alarm-84969.wav",
+  "kind": "false-alarm",
+  "truth": "Absent",
+  "outcome": "Abnormal",
+  "age": "Infant",
+  "location": "MV",
+  "score": 0.9974,
+  "held_out": true
+ },
+ {
+  "file": "unclear-9983.wav",
+  "kind": "unclear",
+  "truth": "Unknown",
+  "outcome": "Abnormal",
+  "age": "Child",
+  "location": "AV",
+  "score": 0.7743,
+  "held_out": false
+ }
+]

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murmur -- heart-sound screening aid</title>
+<meta name="description" content="A screening aid that listens to a heart-sound recording and says whether a murmur is likely enough to warrant echocardiography. It does not diagnose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="app">
+
+  <aside class="rail">
+    <div class="rail-top">
+      <div class="brand">
+        <span class="brand-tile" aria-hidden="true">
+          <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h2.6l1.9-5 3 10 1.9-5H16"/></svg>
+        </span>
+        <span class="brand-name">Murmur</span>
+      </div>
+
+      <button type="button" class="btn btn-primary rail-cta" data-view="screen">Screen a recording</button>
+
+      <nav class="nav" aria-label="Sections">
+        <button type="button" class="nav-item is-on" data-view="screen" aria-current="page">
+          <svg class="nav-ico" viewBox="0 0 18 18" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9h2.6l1.9-5 3 10 1.9-5H16"/></svg>
+          <span>Screen</span>
+        </button>
+        <button type="button" class="nav-item" data-view="evidence">
+          <svg class="nav-ico" viewBox="0 0 18 18" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15.2V9.4M9 15.2V3.2M15 15.2v-4.4"/></svg>
+          <span>Evidence</span>
+        </button>
+        <button type="button" class="nav-item" data-view="about">
+          <svg class="nav-ico" viewBox="0 0 18 18" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.2 2.2 6 9 9.8 15.8 6 9 2.2Z"/><path d="m2.2 11.6 6.8 3.8 6.8-3.8"/></svg>
+          <span>How it works</span>
+        </button>
+        <button type="button" class="nav-item" data-view="limits">
+          <svg class="nav-ico" viewBox="0 0 18 18" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6.6"/><path d="M9 5.4v4.1"/><path d="M9 12.3h.01"/></svg>
+          <span>Limits</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="rail-foot">
+      <div class="usage">
+        <div class="usage-row"><span>Model</span><span class="num">575 KB</span></div>
+        <div class="usage-bar" aria-hidden="true"><span style="width:56%"></span></div>
+      </div>
+      <div class="usage">
+        <div class="usage-row"><span>Test AUC</span><span class="num">0.957</span></div>
+        <div class="usage-bar" aria-hidden="true"><span style="width:96%"></span></div>
+      </div>
+      <p class="rail-note">Measured once on 174 held-out patients. Nothing leaves this device.</p>
+    </div>
+  </aside>
+
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-field" aria-hidden="true">
+        <svg viewBox="0 0 18 18" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="5.1"/><path d="m11.8 11.8 3 3"/></svg>
+        <span>CirCor DigiScope - 942 patients, 5 bundled recordings</span>
+      </div>
+      <div class="topbar-acts">
+        <span class="topbar-act">Runs in your browser</span>
+        <span class="topbar-act">Not a medical device</span>
+      </div>
+    </header>
+
+    <main id="main" class="content">
+
+      <section id="view-screen" class="view">
+        <div class="page-head">
+          <h1 class="page-title">Does this heart sound need an echo?</h1>
+          <p class="page-lede">This tool does not diagnose. It listens to a heart-sound recording
+          and says whether a murmur is audible enough to warrant an echocardiogram. A murmur is
+          not rheumatic heart disease, and the decision to refer belongs to a clinician.</p>
+        </div>
+
+        <div id="boot" class="boot" role="status">Loading model...</div>
+
+        <section class="sec" aria-labelledby="h-samples">
+          <h2 class="sec-h" id="h-samples">Pick a recording</h2>
+          <p class="sec-note">Five recordings from the CirCor DigiScope dataset. The reference
+          annotation for each is hidden until after the model has run.</p>
+          <div id="samples" class="cardrow"></div>
+        </section>
+
+        <section class="sec" aria-labelledby="h-mic">
+          <h2 class="sec-h" id="h-mic">Or record from a microphone</h2>
+          <div class="card card-wide">
+            <div class="card-head">
+              <span class="tile" aria-hidden="true">
+                <svg viewBox="0 0 18 18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6.4" y="2" width="5.2" height="8.2" rx="2.6"/><path d="M3.8 8.6a5.2 5.2 0 0 0 10.4 0"/><path d="M9 13.8V16"/></svg>
+              </span>
+              <div>
+                <div class="card-t">Live capture</div>
+                <div class="card-s">Eight seconds or more</div>
+              </div>
+            </div>
+            <p class="card-body">Hold the microphone firmly against the chest, over the upper left
+            side of the sternum, in as quiet a room as you can find. Stay still.</p>
+            <div class="mic">
+              <button type="button" id="mic-btn" class="btn btn-primary">Record from microphone</button>
+              <div id="mic-state" class="mic-state" role="status" aria-live="polite"></div>
+              <div id="mic-meter" class="meter" hidden><span id="mic-level" class="meter-fill"></span></div>
+            </div>
+            <p class="card-warn">The held-out numbers on this model come from clinical recordings
+            made with a digital stethoscope. Performance on a phone microphone is unmeasured, so
+            treat a microphone result as a demonstration, not a screen.</p>
+          </div>
+        </section>
+
+        <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+        <div id="error" class="error" role="alert" hidden></div>
+
+        <section id="result" class="result" hidden aria-labelledby="verdict"></section>
+      </section>
+
+      <section id="view-evidence" class="view" hidden>
+        <div class="page-head">
+          <h1 class="page-title">What the numbers are</h1>
+          <p class="page-lede">Measured once, on patients the model never saw during training or
+          threshold selection. Nothing here was tuned after it was read.</p>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">Held-out performance</h2>
+          <dl class="figures" id="figures"></dl>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">How to read that</h2>
+          <div class="panel">
+            <p id="limits-prose" class="prose"></p>
+            <p class="prose">The split is by patient, never by recording. Each patient contributes
+            several recordings from different auscultation points, so splitting by recording would
+            put the same heart on both sides of the wall and the held-out numbers would be
+            flattering nonsense.</p>
+            <p class="prose">The threshold was chosen on a separate validation split and then
+            applied unchanged to the test set. It sits where it does because a missed murmur sends
+            a child home and an over-referral spends an echo slot. Those costs are not equal.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">Data and credit</h2>
+          <div class="panel">
+            <p class="prose">Trained on the <strong>CirCor DigiScope Phonocardiogram
+            Dataset</strong>, distributed by PhysioNet under the Open Data Commons Attribution
+            Licence (ODC-By 1.0), which requires this attribution.</p>
+            <p class="cite">Oliveira J, Renna F, Costa PD, Nogueira M, Oliveira C, Ferreira C,
+            Jorge A, Mattos S, Hatem T, Tavares T, Elola A, Rad AB, Sameni R, Clifford GD,
+            Coimbra MT. The CirCor DigiScope Dataset: From Murmur Detection to Murmur
+            Classification. <em>IEEE Journal of Biomedical and Health Informatics</em>, 2022.</p>
+            <p class="cite">Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG,
+            Mietus JE, Moody GB, Peng C-K, Stanley HE. PhysioBank, PhysioToolkit, and PhysioNet.
+            <em>Circulation</em> 101(23):e215-e220, 2000.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-about" class="view" hidden>
+        <div class="page-head">
+          <h1 class="page-title">How it works</h1>
+          <p class="page-lede">Four stages, no hidden ones. A recording goes in, a single number
+          comes out, and that number is compared against one threshold that was chosen
+          deliberately.</p>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">The pipeline</h2>
+          <ol class="stages" id="stages"></ol>
+        </div>
+      </section>
+
+      <section id="view-limits" class="view" hidden>
+        <div class="page-head">
+          <h1 class="page-title">What this cannot tell you</h1>
+          <p class="page-lede">The honest boundary of the tool, written down rather than left for
+          somebody to discover.</p>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">Limits</h2>
+          <ul class="bullets">
+            <li><strong>A murmur is not rheumatic heart disease.</strong> It is one audible sign
+            that something may be worth imaging. Many children have innocent flow murmurs and
+            perfectly normal valves.</li>
+            <li><strong>Silence is not a clean bill of health.</strong> Valve damage can be present
+            with no murmur an ear or a microphone can find. That is part of why echocardiography
+            exists, and why listening alone cannot settle the question either way.</li>
+            <li><strong>The score is a model output, not a risk.</strong> A score of 0.90 does not
+            mean a 90 per cent chance of disease. It means the model placed this recording at 0.90
+            on the scale it learned, and the only decision attached to that is where it falls
+            relative to the threshold.</li>
+            <li><strong>The setting is unmeasured beyond the source data.</strong> The model was
+            trained on recordings from a screening campaign in Brazil, captured with a digital
+            stethoscope by trained operators. Performance on phone microphones, in noisier rooms,
+            with other populations, has not been measured. Nobody should assume it carries
+            over.</li>
+            <li><strong>Recordings the annotators could not call were excluded.</strong> Human
+            experts labelled some recordings Unknown because they could not hear the answer. Those
+            were kept out of training, and the model has no way to say "I cannot tell" in their
+            place.</li>
+          </ul>
+        </div>
+
+        <div class="sec">
+          <h2 class="sec-h">Finished and not finished</h2>
+          <ul class="bullets">
+            <li><strong>Finished.</strong> The model, the held-out evaluation, the browser feature
+            pipeline (checked cell by cell against the Python that produced the measured numbers),
+            and this interface. Inference runs entirely on the device.</li>
+            <li><strong>Not finished.</strong> Any validation outside the source dataset. No
+            prospective use, no phone-microphone evaluation, no clinical sign-off. This is a
+            demonstration of a method, not an instrument anyone should screen a child with.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <p>Murmur runs entirely in the browser. No recording is uploaded, stored, or
+        transmitted.</p>
+        <p class="foot-dim">Not a medical device. Not for clinical use.</p>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

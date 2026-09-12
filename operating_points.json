@@ -1,0 +1,50 @@
+[
+ {
+  "target": 0.85,
+  "threshold": 0.9636391401290894,
+  "test_sensitivity": 0.8857142857142857,
+  "test_specificity": 0.8633093525179856,
+  "missed": 4,
+  "over_referred": 19
+ },
+ {
+  "target": 0.9,
+  "threshold": 0.961218535900116,
+  "test_sensitivity": 0.8857142857142857,
+  "test_specificity": 0.8489208633093526,
+  "missed": 4,
+  "over_referred": 21
+ },
+ {
+  "target": 0.925,
+  "threshold": 0.961218535900116,
+  "test_sensitivity": 0.8857142857142857,
+  "test_specificity": 0.8489208633093526,
+  "missed": 4,
+  "over_referred": 21
+ },
+ {
+  "target": 0.95,
+  "threshold": 0.9454600811004639,
+  "test_sensitivity": 0.9428571428571428,
+  "test_specificity": 0.7697841726618705,
+  "missed": 2,
+  "over_referred": 32
+ },
+ {
+  "target": 0.975,
+  "threshold": 0.9454600811004639,
+  "test_sensitivity": 0.9428571428571428,
+  "test_specificity": 0.7697841726618705,
+  "missed": 2,
+  "over_referred": 32
+ },
+ {
+  "target": 1.0,
+  "threshold": 0.9454600811004639,
+  "test_sensitivity": 0.9428571428571428,
+  "test_specificity": 0.7697841726618705,
+  "missed": 2,
+  "over_referred": 32
+ }
+]
