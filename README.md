@@ -85,7 +85,7 @@ export.py          ONNX export, with an equivalence assertion
 web/dsp.js         the JavaScript port of features.py
 verify_dsp.*       proof the two agree
 web/               the screening console
-docs/              sources, one-page summary, deck, testing instructions
+docs/              sources, the one-page summary, the code PDF, testing instructions
 ```
 
 ## Data
@@ -97,3 +97,16 @@ test patients, and are included under that licence with attribution.
 
 Full citations, including two figures corrected after checking them against the source, are in
 [`docs/sources.md`](docs/sources.md).
+
+## Licence
+
+The code here is MIT licensed — see [LICENSE](LICENSE).
+
+The five demo recordings in `web/samples/` come from the CirCor DigiScope dataset and are
+redistributed under its **Open Data Commons Attribution Licence v1.0 (ODC-By)**, attributed to
+Oliveira J, Renna F, Costa PD, et al., *IEEE J Biomed Health Inform.* 2022;26(6):2524-2535, via
+PhysioNet. The trained weights in this repository are derived from that dataset and carry the
+same attribution requirement. The dataset itself is not redistributed.
+
+**Not a medical device.** Provided as-is, for research and demonstration. Nothing here is
+cleared for clinical use.
