@@ -10,3 +10,6 @@ dsp_fixtures.json
 dsp_unit_fixtures.json
 rows_cache.json
 .DS_Store
+
+# the torch checkpoint; web/murmur.onnx is what actually runs
+murmur_net.pt
