@@ -5,7 +5,7 @@
 **Project name:** Murmur
 **Tagline:** Decides which children need an echocardiogram, and says out loud what it missed.
 **Live demo:** https://d2ajaodgsqzl9.cloudfront.net
-**Repository:** (fill in)
+**Repository:** https://github.com/smithadams0019/murmur
 **One-page PDF:** docs/onepager.pdf
 **Video:** (under 3:00)
 **Built with:** PyTorch, ONNX Runtime Web, scipy, S3, CloudFront
